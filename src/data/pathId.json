@@ -1,0 +1,18 @@
+[
+    {
+        "path": "student",
+        "id": 0
+    },
+    {
+        "path": "alumni",
+        "id": 1
+    },
+    {
+        "path": "poslodavac",
+        "id": 2
+    },
+    {
+        "path": "udruga",
+        "id": 3
+    }
+]
