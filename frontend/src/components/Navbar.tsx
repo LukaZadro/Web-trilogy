@@ -53,9 +53,13 @@ const Navbar = () => {
             >
               UDRUGE
             </Link>
+            <Link
+              to="/login"
+              >
             <Button variant="default" size="sm" className="shadow-soft">
               Prijavi se
             </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -98,9 +102,14 @@ const Navbar = () => {
             >
               CV Builder
             </Link>
+            <Link
+              to="/login"
+              onClick={() => setIsMenuOpen(false)}
+            >
             <Button variant="default" size="sm" className="w-full">
               Prijavi se
             </Button>
+            </Link>
           </div>
         )}
       </div>
