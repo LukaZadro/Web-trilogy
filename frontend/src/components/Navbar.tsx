@@ -30,6 +30,10 @@ const Navbar = () => {
               NASLOVNA
             </Link>
             <Link
+              to="/sastavnice">
+                SASTAVNICE
+            </Link>
+            <Link
               to="/student"
               className="text-foreground hover:text-primary transition-colors"
             >
