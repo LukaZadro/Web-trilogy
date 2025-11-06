@@ -15,6 +15,7 @@ import Registration from "./pages/Registration";
 import Events from "./pages/Events";
 import Career from "./pages/Career";
 import Projects from "./pages/Projects";
+import Sastavnice from "./pages/Sastavnice";
 
 const queryClient = new QueryClient();
 
@@ -36,6 +37,9 @@ const App = () => (
           <Route path="/organizations" element={<Organizations />} />
           <Route path="/mentorship" element={<Mentorship />} />
           <Route path="/cv-builder" element={<CVBuilder />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Registration />} />
+          <Route path="/sastavnice" element={<Sastavnice />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
