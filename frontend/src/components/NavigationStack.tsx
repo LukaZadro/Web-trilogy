@@ -27,7 +27,7 @@ const NavigationStack = ({ role_id }) => {
       <div className="flex flex-col justify-center items-center w-full gap-4">
         {newData[role_id].sections.map((sec, ind) => (
           <Link
-            to={`/student/${sec}`}
+            to={`/${newData_2[role_id].title}/${sec}`}
             key={`${ind}`}
             className="w-full md:w-[60%] bg-white"
           >

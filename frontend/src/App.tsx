@@ -10,6 +10,8 @@ import Mentorship from "./pages/Mentorship";
 import CVBuilder from "./pages/CVBuilder";
 import NotFound from "./pages/NotFound";
 import Manual from "./pages/Manual";
+import Login from "./pages/Login";
+import Registration from "./pages/Registration";
 
 const queryClient = new QueryClient();
 
@@ -21,6 +23,8 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/prijava" element={<Login />} />
+          <Route path="/registracija" element={<Registration />} />
           <Route path="/:path" element={<Manual />} />
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/organizations" element={<Organizations />} />
