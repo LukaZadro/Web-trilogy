@@ -10,12 +10,12 @@ const Registration: React.FC = () => {
   const [confirm, setConfirm] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [role, setRole] = useState("");
 
   const validate = () => {
     if (!firstName || !lastName) return "Ime i prezime su obavezni.";
     if (!email) return "Email je obavezan.";
     if (password.length < 6) return "Lozinka mora imati najmanje 6 znakova.";
-    if (password !== confirm) return "Lozinke se ne poklapaju.";
     return null;
   };
 
@@ -49,56 +49,71 @@ const Registration: React.FC = () => {
       <form onSubmit={onSubmit} className="space-y-4">
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <label className="block text-sm mb-1">Ime</label>
-            <input
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-              className="w-full border rounded px-3 py-2"
-              placeholder="Ivan"
-            />
+        <label className="block text-sm mb-1">Ime</label>
+        <input
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+          className="w-full border rounded px-3 py-2"
+          placeholder="Ivan"
+        />
           </div>
           <div>
-            <label className="block text-sm mb-1">Prezime</label>
-            <input
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-              className="w-full border rounded px-3 py-2"
-              placeholder="Ivić"
-            />
+        <label className="block text-sm mb-1">Prezime</label>
+        <input
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+          className="w-full border rounded px-3 py-2"
+          placeholder="Ivić"
+        />
           </div>
         </div>
 
         <div>
           <label className="block text-sm mb-1">Email</label>
           <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full border rounded px-3 py-2"
-            placeholder="primjer@domena.hr"
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        className="w-full border rounded px-3 py-2"
+        placeholder="primjer@domena.hr"
           />
+        </div>
+
+        <div>
+          <label className="block text-sm mb-1">Uloga</label>
+          <select
+          value={role}
+          onChange={(e) => setRole(e.target.value)}
+        className="w-full border rounded px-3 py-2 bg-white"
+          >
+        <option value="">Odaberite ulogu</option>
+        <option value="student">Student</option>
+        <option value="alumni">Alumni</option>
+        <option value="poslodavac">Poslodavac</option>
+        <option value="studentska_organizacija">Studentska organizacija</option>
+          </select>
         </div>
 
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <label className="block text-sm mb-1">Lozinka</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full border rounded px-3 py-2"
-              placeholder="Lozinka"
-            />
+        <label className="block text-sm mb-1">Lozinka</label>
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="w-full border rounded px-3 py-2"
+          placeholder="Lozinka"
+        />
           </div>
           <div>
-            <label className="block text-sm mb-1">Potvrdi lozinku</label>
-            <input
-              type="password"
-              value={confirm}
-              onChange={(e) => setConfirm(e.target.value)}
-              className="w-full border rounded px-3 py-2"
-              placeholder="Ponovite lozinku"
-            />
+        <label className="block text-sm mb-1">Potvrdi lozinku</label>
+        <input
+          type="password"
+          value={confirm}
+          onChange={(e) => setConfirm(e.target.value)}
+          className="w-full border rounded px-3 py-2"
+          placeholder="Ponovite lozinku"
+        />
           </div>
         </div>
 

@@ -40,12 +40,6 @@ class Database {
         });
     }
 
-    getSchemaSQL() {
-        return `
-            
-        `;
-    }
-
     // User management methods
     async createUser(userData) {
         const {
@@ -96,7 +90,7 @@ class Database {
 
     async createAlumni(alumniData) {
         const sql = `
-            INSERT INTO alumni (user_id, graduation_year, degree, major, current_job_title, linkedin_url)
+            INSERT INTO alumni (user_id,major)
             VALUES (?, ?, ?, ?, ?, ?)
         `;
 
@@ -259,6 +253,12 @@ class Database {
         });
     }
 
+    
+    getSchemaSQL() {
+        return `
+        
+        `;
+    }
     // Close database connection
     close() {
         if (this.db) {
