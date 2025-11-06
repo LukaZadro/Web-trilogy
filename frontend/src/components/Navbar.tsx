@@ -8,17 +8,22 @@ const Navbar = () => {
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-lg shadow-sm h-40">
-      <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-40">
-          <div className="flex items-center justify-center gap-2">
+      <div className="container mx-auto px-0 md:px-4">
+        <div className="flex items-center justify-between h-40 pl-4 md:pl-0 pr-4 md:pr-0">
+          <div className="flex items-center justify-center gap-2 ">
             <Link to="/" className="flex items-center gap-2 group">
-              <img src="logo_header.png" width={100} height={100} />
+              <img src="/logo_header.png" width={100} height={100} alt="logo" />
             </Link>
             <Link
               to="https://www.unizg.hr/"
               className="flex items-center gap-2 group"
             >
-              <img src="sveuciliste_logo.png" width={200} height={100} />
+              <img
+                src="/sveuciliste_logo.png"
+                width={200}
+                height={100}
+                alt="logo"
+              />
             </Link>
           </div>
           {/* Desktop Navigation */}
@@ -69,34 +74,41 @@ const Navbar = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden py-4 space-y-4 border-t border-border">
+          <div className="md:hidden py-4 space-y-4 border-t border-border bg-card pl-4 pr-4">
             <Link
-              to="/jobs"
-              className="block text-foreground hover:text-primary transition-colors"
+              to="/"
+              className="block text-center text-foreground hover:text-primary transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              Poslovi & Prakse
+              Naslovna
             </Link>
             <Link
-              to="/organizations"
-              className="block text-foreground hover:text-primary transition-colors"
+              to="/student"
+              className="block text-center text-foreground hover:text-primary transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              Studentske udruge
+              Studenti
             </Link>
             <Link
-              to="/mentorship"
-              className="block text-foreground hover:text-primary transition-colors"
+              to="/alumni"
+              className="block text-center text-foreground hover:text-primary transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              Alumni mentorstvo
+              Alumni
             </Link>
             <Link
-              to="/cv-builder"
-              className="block text-foreground hover:text-primary transition-colors"
+              to="/poslodavac"
+              className="block text-center text-foreground hover:text-primary transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              CV Builder
+              Poslodavci
+            </Link>
+            <Link
+              to="/udruga"
+              className="block text-center text-foreground hover:text-primary transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Udruge
             </Link>
             <Button variant="default" size="sm" className="w-full">
               Prijavi se

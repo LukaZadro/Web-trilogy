@@ -59,6 +59,7 @@ const Hero = () => {
           <img
             src="homeImg.png"
             className="w-[600px] h-[300px] md:w-[500px] md:h-[400px]"
+            alt="home Image"
           />
         </div>
       </div>
@@ -69,7 +70,11 @@ const Hero = () => {
         {newData.map((role) => (
           <Link to={`/${role.title}`} key={`${role.id}`}>
             <div className="flex flex-col items-center gap-4 bg-gradient-card p-6 rounded-2xl shadow-soft hover:shadow-medium transition-all duration-300 hover:-translate-y-1 border border-border hover:text-blue-600">
-              <img src={role.icon} className="w-[200px] h-[200px]" />
+              <img
+                src={role.icon}
+                className="w-[200px] h-[200px]"
+                alt="logo role"
+              />
               <h3 className="font-semibold text-lg mb-2">
                 {role.title.toUpperCase()}
               </h3>

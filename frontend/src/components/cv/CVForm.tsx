@@ -24,7 +24,14 @@ const CVForm = ({ data, onChange }: CVFormProps) => {
       ...data,
       education: [
         ...data.education,
-        { institution: "", degree: "", field: "", startDate: "", endDate: "", gpa: "" },
+        {
+          institution: "",
+          degree: "",
+          field: "",
+          startDate: "",
+          endDate: "",
+          gpa: "",
+        },
       ],
     });
   };
@@ -36,7 +43,10 @@ const CVForm = ({ data, onChange }: CVFormProps) => {
   };
 
   const removeEducation = (index: number) => {
-    onChange({ ...data, education: data.education.filter((_, i) => i !== index) });
+    onChange({
+      ...data,
+      education: data.education.filter((_, i) => i !== index),
+    });
   };
 
   const addExperience = () => {
@@ -44,7 +54,13 @@ const CVForm = ({ data, onChange }: CVFormProps) => {
       ...data,
       experience: [
         ...data.experience,
-        { company: "", position: "", startDate: "", endDate: "", description: "" },
+        {
+          company: "",
+          position: "",
+          startDate: "",
+          endDate: "",
+          description: "",
+        },
       ],
     });
   };
@@ -56,18 +72,21 @@ const CVForm = ({ data, onChange }: CVFormProps) => {
   };
 
   const removeExperience = (index: number) => {
-    onChange({ ...data, experience: data.experience.filter((_, i) => i !== index) });
+    onChange({
+      ...data,
+      experience: data.experience.filter((_, i) => i !== index),
+    });
   };
 
   return (
     <div className="space-y-6">
       <Card>
         <CardHeader>
-          <CardTitle>Personal Information</CardTitle>
+          <CardTitle>Osobne informacije</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4">
           <div>
-            <Label htmlFor="fullName">Full Name</Label>
+            <Label htmlFor="fullName">Ime i prezime</Label>
             <Input
               id="fullName"
               value={data.personalInfo.fullName}
@@ -76,7 +95,7 @@ const CVForm = ({ data, onChange }: CVFormProps) => {
             />
           </div>
           <div>
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email">E-pošta</Label>
             <Input
               id="email"
               type="email"
@@ -86,7 +105,7 @@ const CVForm = ({ data, onChange }: CVFormProps) => {
             />
           </div>
           <div>
-            <Label htmlFor="phone">Phone</Label>
+            <Label htmlFor="phone">Broj telefona</Label>
             <Input
               id="phone"
               value={data.personalInfo.phone}
@@ -95,7 +114,7 @@ const CVForm = ({ data, onChange }: CVFormProps) => {
             />
           </div>
           <div>
-            <Label htmlFor="location">Location</Label>
+            <Label htmlFor="location">Mjesto prebivališta</Label>
             <Input
               id="location"
               value={data.personalInfo.location}
@@ -117,13 +136,13 @@ const CVForm = ({ data, onChange }: CVFormProps) => {
 
       <Card>
         <CardHeader>
-          <CardTitle>Professional Summary</CardTitle>
+          <CardTitle>Profesionalni sažetak</CardTitle>
         </CardHeader>
         <CardContent>
           <Textarea
             value={data.summary}
             onChange={(e) => onChange({ ...data, summary: e.target.value })}
-            placeholder="Brief summary of your professional background and goals..."
+            placeholder="Kratki opis vaših profesionalnih ciljeva i vještina..."
             className="min-h-[100px]"
           />
         </CardContent>
@@ -131,15 +150,18 @@ const CVForm = ({ data, onChange }: CVFormProps) => {
 
       <Card>
         <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle>Education</CardTitle>
+          <CardTitle>Obrazovanje</CardTitle>
           <Button onClick={addEducation} size="sm" variant="outline">
             <Plus className="h-4 w-4 mr-2" />
-            Add
+            Dodaj
           </Button>
         </CardHeader>
         <CardContent className="space-y-4">
           {data.education.map((edu, index) => (
-            <div key={index} className="space-y-3 p-4 border rounded-lg relative">
+            <div
+              key={index}
+              className="space-y-3 p-4 border rounded-lg relative"
+            >
               <Button
                 onClick={() => removeEducation(index)}
                 size="icon"
@@ -149,44 +171,54 @@ const CVForm = ({ data, onChange }: CVFormProps) => {
                 <Trash2 className="h-4 w-4" />
               </Button>
               <div>
-                <Label>Institution</Label>
+                <Label>Obrazovna institucija</Label>
                 <Input
                   value={edu.institution}
-                  onChange={(e) => updateEducation(index, "institution", e.target.value)}
+                  onChange={(e) =>
+                    updateEducation(index, "institution", e.target.value)
+                  }
                   placeholder="University of Zagreb"
                 />
               </div>
               <div>
-                <Label>Degree</Label>
+                <Label>Diploma</Label>
                 <Input
                   value={edu.degree}
-                  onChange={(e) => updateEducation(index, "degree", e.target.value)}
+                  onChange={(e) =>
+                    updateEducation(index, "degree", e.target.value)
+                  }
                   placeholder="Bachelor of Science"
                 />
               </div>
               <div>
-                <Label>Field of Study</Label>
+                <Label>Područje studiranja</Label>
                 <Input
                   value={edu.field}
-                  onChange={(e) => updateEducation(index, "field", e.target.value)}
+                  onChange={(e) =>
+                    updateEducation(index, "field", e.target.value)
+                  }
                   placeholder="Computer Science"
                 />
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <Label>Start Date</Label>
+                  <Label>Datum početka</Label>
                   <Input
                     type="month"
                     value={edu.startDate}
-                    onChange={(e) => updateEducation(index, "startDate", e.target.value)}
+                    onChange={(e) =>
+                      updateEducation(index, "startDate", e.target.value)
+                    }
                   />
                 </div>
                 <div>
-                  <Label>End Date</Label>
+                  <Label>Datum kraja</Label>
                   <Input
                     type="month"
                     value={edu.endDate}
-                    onChange={(e) => updateEducation(index, "endDate", e.target.value)}
+                    onChange={(e) =>
+                      updateEducation(index, "endDate", e.target.value)
+                    }
                   />
                 </div>
               </div>
@@ -194,7 +226,9 @@ const CVForm = ({ data, onChange }: CVFormProps) => {
                 <Label>GPA (optional)</Label>
                 <Input
                   value={edu.gpa}
-                  onChange={(e) => updateEducation(index, "gpa", e.target.value)}
+                  onChange={(e) =>
+                    updateEducation(index, "gpa", e.target.value)
+                  }
                   placeholder="4.0"
                 />
               </div>
@@ -205,15 +239,18 @@ const CVForm = ({ data, onChange }: CVFormProps) => {
 
       <Card>
         <CardHeader className="flex flex-row items-center justify-between">
-          <CardTitle>Experience</CardTitle>
+          <CardTitle>Iskustvo</CardTitle>
           <Button onClick={addExperience} size="sm" variant="outline">
             <Plus className="h-4 w-4 mr-2" />
-            Add
+            Dodaj
           </Button>
         </CardHeader>
         <CardContent className="space-y-4">
           {data.experience.map((exp, index) => (
-            <div key={index} className="space-y-3 p-4 border rounded-lg relative">
+            <div
+              key={index}
+              className="space-y-3 p-4 border rounded-lg relative"
+            >
               <Button
                 onClick={() => removeExperience(index)}
                 size="icon"
@@ -223,44 +260,54 @@ const CVForm = ({ data, onChange }: CVFormProps) => {
                 <Trash2 className="h-4 w-4" />
               </Button>
               <div>
-                <Label>Company</Label>
+                <Label>Tvrtka</Label>
                 <Input
                   value={exp.company}
-                  onChange={(e) => updateExperience(index, "company", e.target.value)}
+                  onChange={(e) =>
+                    updateExperience(index, "company", e.target.value)
+                  }
                   placeholder="Tech Company Inc."
                 />
               </div>
               <div>
-                <Label>Position</Label>
+                <Label>Pozicija</Label>
                 <Input
                   value={exp.position}
-                  onChange={(e) => updateExperience(index, "position", e.target.value)}
+                  onChange={(e) =>
+                    updateExperience(index, "position", e.target.value)
+                  }
                   placeholder="Software Developer"
                 />
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <Label>Start Date</Label>
+                  <Label>Datum početka</Label>
                   <Input
                     type="month"
                     value={exp.startDate}
-                    onChange={(e) => updateExperience(index, "startDate", e.target.value)}
+                    onChange={(e) =>
+                      updateExperience(index, "startDate", e.target.value)
+                    }
                   />
                 </div>
                 <div>
-                  <Label>End Date</Label>
+                  <Label>Datum kraja</Label>
                   <Input
                     type="month"
                     value={exp.endDate}
-                    onChange={(e) => updateExperience(index, "endDate", e.target.value)}
+                    onChange={(e) =>
+                      updateExperience(index, "endDate", e.target.value)
+                    }
                   />
                 </div>
               </div>
               <div>
-                <Label>Description</Label>
+                <Label>Opis</Label>
                 <Textarea
                   value={exp.description}
-                  onChange={(e) => updateExperience(index, "description", e.target.value)}
+                  onChange={(e) =>
+                    updateExperience(index, "description", e.target.value)
+                  }
                   placeholder="Key responsibilities and achievements..."
                   className="min-h-[80px]"
                 />
@@ -272,13 +319,21 @@ const CVForm = ({ data, onChange }: CVFormProps) => {
 
       <Card>
         <CardHeader>
-          <CardTitle>Skills</CardTitle>
+          <CardTitle>Vještine</CardTitle>
         </CardHeader>
         <CardContent>
-          <Label>Enter skills separated by commas</Label>
+          <Label>Unesite vještine odijeljene zarezom</Label>
           <Input
             value={data.skills.join(", ")}
-            onChange={(e) => onChange({ ...data, skills: e.target.value.split(",").map(s => s.trim()).filter(s => s) })}
+            onChange={(e) =>
+              onChange({
+                ...data,
+                skills: e.target.value
+                  .split(",")
+                  .map((s) => s.trim())
+                  .filter((s) => s),
+              })
+            }
             placeholder="JavaScript, React, TypeScript, Node.js"
           />
         </CardContent>
@@ -286,13 +341,21 @@ const CVForm = ({ data, onChange }: CVFormProps) => {
 
       <Card>
         <CardHeader>
-          <CardTitle>Languages</CardTitle>
+          <CardTitle>Jezici</CardTitle>
         </CardHeader>
         <CardContent>
-          <Label>Enter languages separated by commas</Label>
+          <Label>Unesite jezike odijeljene zarezom</Label>
           <Input
             value={data.languages.join(", ")}
-            onChange={(e) => onChange({ ...data, languages: e.target.value.split(",").map(l => l.trim()).filter(l => l) })}
+            onChange={(e) =>
+              onChange({
+                ...data,
+                languages: e.target.value
+                  .split(",")
+                  .map((l) => l.trim())
+                  .filter((l) => l),
+              })
+            }
             placeholder="English (Fluent), Croatian (Native)"
           />
         </CardContent>

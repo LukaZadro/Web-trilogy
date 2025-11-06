@@ -50,7 +50,9 @@ const ModernTemplate = ({ data }: TemplateProps) => {
       {/* Summary */}
       {data.summary && (
         <div className="mb-6">
-          <h2 className="text-xl font-bold text-primary mb-3">Professional Summary</h2>
+          <h2 className="text-xl font-bold text-primary mb-3">
+            Profesionalni sažetak
+          </h2>
           <p className="text-foreground leading-relaxed">{data.summary}</p>
         </div>
       )}
@@ -58,17 +60,21 @@ const ModernTemplate = ({ data }: TemplateProps) => {
       {/* Education */}
       {data.education.length > 0 && (
         <div className="mb-6">
-          <h2 className="text-xl font-bold text-primary mb-3">Education</h2>
+          <h2 className="text-xl font-bold text-primary mb-3">Obrazovanje</h2>
           {data.education.map((edu, index) => (
             <div key={index} className="mb-4">
               <div className="flex justify-between items-start mb-1">
-                <h3 className="font-semibold text-foreground">{edu.degree} - {edu.field}</h3>
+                <h3 className="font-semibold text-foreground">
+                  {edu.degree} - {edu.field}
+                </h3>
                 <span className="text-sm text-muted-foreground">
                   {formatDate(edu.startDate)} - {formatDate(edu.endDate)}
                 </span>
               </div>
               <p className="text-muted-foreground">{edu.institution}</p>
-              {edu.gpa && <p className="text-sm text-muted-foreground">GPA: {edu.gpa}</p>}
+              {edu.gpa && (
+                <p className="text-sm text-muted-foreground">GPA: {edu.gpa}</p>
+              )}
             </div>
           ))}
         </div>
@@ -77,17 +83,21 @@ const ModernTemplate = ({ data }: TemplateProps) => {
       {/* Experience */}
       {data.experience.length > 0 && (
         <div className="mb-6">
-          <h2 className="text-xl font-bold text-primary mb-3">Experience</h2>
+          <h2 className="text-xl font-bold text-primary mb-3">Iskustvo</h2>
           {data.experience.map((exp, index) => (
             <div key={index} className="mb-4">
               <div className="flex justify-between items-start mb-1">
-                <h3 className="font-semibold text-foreground">{exp.position}</h3>
+                <h3 className="font-semibold text-foreground">
+                  {exp.position}
+                </h3>
                 <span className="text-sm text-muted-foreground">
                   {formatDate(exp.startDate)} - {formatDate(exp.endDate)}
                 </span>
               </div>
               <p className="text-muted-foreground mb-2">{exp.company}</p>
-              <p className="text-foreground text-sm leading-relaxed">{exp.description}</p>
+              <p className="text-foreground text-sm leading-relaxed">
+                {exp.description}
+              </p>
             </div>
           ))}
         </div>
@@ -97,7 +107,7 @@ const ModernTemplate = ({ data }: TemplateProps) => {
       <div className="grid grid-cols-2 gap-6">
         {data.skills.length > 0 && (
           <div>
-            <h2 className="text-xl font-bold text-primary mb-3">Skills</h2>
+            <h2 className="text-xl font-bold text-primary mb-3">Vještine</h2>
             <div className="flex flex-wrap gap-2">
               {data.skills.map((skill, index) => (
                 <span
@@ -112,10 +122,12 @@ const ModernTemplate = ({ data }: TemplateProps) => {
         )}
         {data.languages.length > 0 && (
           <div>
-            <h2 className="text-xl font-bold text-primary mb-3">Languages</h2>
+            <h2 className="text-xl font-bold text-primary mb-3">Jezici</h2>
             <ul className="space-y-1">
               {data.languages.map((lang, index) => (
-                <li key={index} className="text-foreground">{lang}</li>
+                <li key={index} className="text-foreground">
+                  {lang}
+                </li>
               ))}
             </ul>
           </div>

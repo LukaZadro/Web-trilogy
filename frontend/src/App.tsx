@@ -12,6 +12,9 @@ import NotFound from "./pages/NotFound";
 import Manual from "./pages/Manual";
 import Login from "./pages/Login";
 import Registration from "./pages/Registration";
+import Events from "./pages/Events";
+import Career from "./pages/Career";
+import Projects from "./pages/Projects";
 
 const queryClient = new QueryClient();
 
@@ -26,7 +29,10 @@ const App = () => (
           <Route path="/prijava" element={<Login />} />
           <Route path="/registracija" element={<Registration />} />
           <Route path="/:path" element={<Manual />} />
-          <Route path="/jobs" element={<Jobs />} />
+          <Route path="/:role/ponuda-poslova" element={<Jobs />} />
+          <Route path="/:role/dogadanja" element={<Events />} />
+          <Route path="/:role/karijera" element={<Career />} />
+          <Route path="/:role/projekti" element={<Projects />} />
           <Route path="/organizations" element={<Organizations />} />
           <Route path="/mentorship" element={<Mentorship />} />
           <Route path="/cv-builder" element={<CVBuilder />} />
