@@ -1,13 +1,13 @@
 [
     {
         "id":1,
-        "sections":[{"title":"događanja", "pathname":"dogadanja"},{"title":"karijera", "pathname":"karijera"},{"title":"ponuda poslova", "pathname":"ponuda-poslova"},{"title":"projekti", "pathname":"projekti"},{"title":"forum", "pathname":"forum"}],
-        "description":["Pronađi najnovija događanja i radionice za studente.","Istraži mogućnosti karijere i savjete za razvoj karijere. Izradi vlastiti životopis CV.","Pregledaj ponude poslova prilagođene studentima.","Pridruži se projektima i stekni praktično iskustvo.","Sudjeluj u forumima i poveži se s vršnjacima."]
+        "sections":[{"title":"događanja", "pathname":"dogadanja"},{"title":"karijera", "pathname":"karijera"},{"title":"ponuda poslova", "pathname":"ponuda-poslova"},{"title":"projekti", "pathname":"projekti"},{"title":"mentorstvo", "pathname":"mentorstvo"},{"title":"forum", "pathname":"forum"}],
+        "description":["Pronađi najnovija događanja i radionice za studente.","Istraži mogućnosti karijere i savjete za razvoj karijere. Izradi vlastiti životopis CV.","Pregledaj ponude poslova prilagođene studentima.","Pridruži se projektima i stekni praktično iskustvo.", "Pronađi mentora za završni ili diplomski rad.","Sudjeluj u forumima i poveži se s vršnjacima."]
     },
     {
         "id":2,
-        "sections":[{"title":"događanja", "pathname":"dogadanja"},{"title":"karijera", "pathname":"karijera"},{"title":"ponuda poslova", "pathname":"ponuda-poslova"},{"title":"forum", "pathname":"forum"}],
-        "description":["Ostani informiran o događanjima i radionicama za alumnije.","Istraži mogućnosti karijere i savjete za razvoj karijere nakon diplome.","Pregledaj ponude poslova prilagođene alumnijima.","Sudjeluj u forumima i poveži se s ostalim alumnijima."]
+        "sections":[{"title":"događanja", "pathname":"dogadanja"},{"title":"karijera", "pathname":"karijera"},{"title":"ponuda poslova", "pathname":"ponuda-poslova"},{"title":"mentorstvo", "pathname":"mentorstvo"},{"title":"forum", "pathname":"forum"}],
+        "description":["Ostani informiran o događanjima i radionicama za alumnije.","Istraži mogućnosti karijere i savjete za razvoj karijere nakon diplome.","Pregledaj ponude poslova prilagođene alumnijima.","Pronađi studenta za istraživanje i mentoriraj ga.","Sudjeluj u forumima i poveži se s ostalim alumnijima."]
     },
     {
         "id":3,

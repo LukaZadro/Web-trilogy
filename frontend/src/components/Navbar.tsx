@@ -20,7 +20,7 @@ const Navbar = () => {
             >
               <img
                 src="/sveuciliste_logo.png"
-                width={200}
+                width={180}
                 height={100}
                 alt="logo"
               />
@@ -34,10 +34,7 @@ const Navbar = () => {
             >
               NASLOVNA
             </Link>
-            <Link
-              to="/sastavnice">
-                SASTAVNICE
-            </Link>
+            <Link to="/sastavnice">SASTAVNICE</Link>
             <Link
               to="/student"
               className="text-foreground hover:text-primary transition-colors"
@@ -62,12 +59,10 @@ const Navbar = () => {
             >
               UDRUGE
             </Link>
-            <Link
-              to="/login"
-              >
-            <Button variant="default" size="sm" className="shadow-soft">
-              Prijavi se
-            </Button>
+            <Link to="/login">
+              <Button variant="default" size="sm" className="shadow-soft">
+                Prijavi se
+              </Button>
             </Link>
           </div>
 
@@ -118,13 +113,10 @@ const Navbar = () => {
             >
               Udruge
             </Link>
-            <Link
-              to="/login"
-              onClick={() => setIsMenuOpen(false)}
-            >
-            <Button variant="default" size="sm" className="w-full">
-              Prijavi se
-            </Button>
+            <Link to="/login" onClick={() => setIsMenuOpen(false)}>
+              <Button variant="default" size="sm" className="w-full">
+                Prijavi se
+              </Button>
             </Link>
           </div>
         )}
