@@ -13,6 +13,7 @@ import { Briefcase, GraduationCap, MessageCircle } from "lucide-react";
 import mentors from "@/data/menthors";
 import students from "@/data/students";
 import { useParams } from "react-router-dom";
+import Footer from "@/components/Footer";
 
 const Mentorship = () => {
   const { role } = useParams();
@@ -95,6 +96,7 @@ const Mentorship = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

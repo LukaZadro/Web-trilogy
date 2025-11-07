@@ -26,6 +26,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import Footer from "@/components/Footer";
 
 interface Projects {
   id: number;
@@ -147,6 +148,7 @@ const Projects = () => {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     </>
   );

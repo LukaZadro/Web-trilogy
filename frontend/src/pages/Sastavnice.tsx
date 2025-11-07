@@ -21,6 +21,7 @@ import {
   LucidePhoneIncoming,
   Mail,
   UserRoundCog,
+  BookOpenTextIcon,
 } from "lucide-react";
 import {
   Select,
@@ -31,8 +32,10 @@ import {
 } from "@/components/ui/select";
 import domains_faculty from "@/data/domains_faculty";
 import { Link } from "react-router-dom";
+import Footer from "@/components/Footer";
 
 type College = {
+  id: string;
   name: string;
   addresses: string[];
   website?: string;
@@ -70,7 +73,7 @@ const Sastavnice = () => {
 
       <div className="container mx-auto px-4 pt-[180px] pb-16">
         <div className="max-w-5xl mx-auto space-y-8">
-          <div className="space-y-4">
+          <div className="space-y-4 py-4">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground">
               Prikaz sastavnica Sveučilišta u Zagrebu
             </h1>
@@ -78,6 +81,17 @@ const Sastavnice = () => {
               Pronađi informacije o sastavnicama Sveučilišta u Zagrebu. Odaberi
               fakultet ili akademiju koja te zanima i saznaj više. Ovo je prvi
               korak prema tvojoj akademskoj budućnosti. Sretno!
+            </p>
+            <p className="text-xl text-primary">
+              <BookOpenTextIcon className="inline mr-2 h-4 w-4 " />
+              <span className="font-bold ">NOVO!</span> Prouči vodič za buduće
+              studente Sveučilišta u Zagrebu 2026./2027. ak. god. Saznaj sve o
+              programima koje fakulteti i akademije nude. Također saznaj što te
+              očekuje nakon završetka studija.
+            </p>
+            <p>
+              Za više informacija pristisni gumb "Saznaj više" pored sastavnice
+              koja te zanima.
             </p>
           </div>
 
@@ -179,7 +193,7 @@ const Sastavnice = () => {
                         Dekan: {coll.dean}
                       </div>
                       <div className="flex flex-col md:flex-row gap-4 md:gap-2 justify-end">
-                        <a href={`${coll.website}`}>
+                        <a href={`/sastavnice/${coll.id}`}>
                           <Button className="w-full md:w-auto bg-primary/10 text-primary hover:bg-primary/20">
                             Saznaj više
                           </Button>
@@ -197,6 +211,7 @@ const Sastavnice = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

@@ -6,6 +6,7 @@ import ClassicTemplate from "@/components/cv/templates/ClassicTemplate";
 import MinimalTemplate from "@/components/cv/templates/MinimalTemplate";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Footer from "@/components/Footer";
 
 export interface CVData {
   personalInfo: {
@@ -114,6 +115,7 @@ const CVBuilder = () => {
           </div>
         </main>
       </div>
+      <Footer />
     </div>
   );
 };

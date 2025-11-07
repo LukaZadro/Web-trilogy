@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
+import { BookOpenTextIcon, Menu } from "lucide-react";
 import { useState } from "react";
 
 const Navbar = () => {
@@ -34,7 +34,13 @@ const Navbar = () => {
             >
               NASLOVNA
             </Link>
-            <Link to="/sastavnice">SASTAVNICE</Link>
+            <Link
+              to="/sastavnice"
+              className="relative text-foreground hover:text-primary transition-colors"
+            >
+              SASTAVNICE
+              <p className=" absolute  text-primary font-bold z-10">VODIČ</p>
+            </Link>
             <Link
               to="/student"
               className="text-foreground hover:text-primary transition-colors"
