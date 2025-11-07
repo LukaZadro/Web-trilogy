@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import NavigationStack from "@/components/NavigationStack";
 import data from "../data/pathId.json";
 import { useParams } from "react-router-dom";
+import Footer from "@/components/Footer";
 
 interface StudentProps {
   path: string;
@@ -18,6 +19,7 @@ const Manual = () => {
     <>
       <Navbar />
       <NavigationStack role_id={item.id} />
+      <Footer />
     </>
   );
 };

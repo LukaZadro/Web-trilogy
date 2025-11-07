@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import { Link } from "react-router-dom";
 
@@ -182,6 +183,7 @@ const Career = () => {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     </>
   );

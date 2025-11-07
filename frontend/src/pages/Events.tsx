@@ -21,6 +21,7 @@ import {
 } from "@/components/ui/select";
 
 import domains_faculty from "@/data/domains_faculty";
+import Footer from "@/components/Footer";
 
 interface Events {
   id: number;
@@ -166,6 +167,7 @@ const Events = () => {
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     </>
   );
