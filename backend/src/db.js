@@ -52,56 +52,23 @@ class Database {
 
     // User management methods
     async createUser(userData) {
-        const {
-            email,
-            password,
-            firstName,
-            lastName,
-            userType
-        } = userData;
+    const { email, password, firstName, lastName, userType } = userData;
 
+    const sql = `
+        INSERT INTO users (email, password, first_name, last_name, user_type)
+        VALUES (?, ?, ?, ?, ?)
+    `;
 
-        const sql = `
-            INSERT INTO users (email, password, first_name, last_name,user_type)
-            VALUES (?, ?, ?, ?, ?)
-        `;
-
-        return new Promise((resolve, reject) => {
-            this.db.run(sql, [email, password, firstName, lastName,userType], function(err) {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(this.lastID);
-                }
-            });
+    return new Promise((resolve, reject) => {
+        this.db.run(sql, [email, password, firstName, lastName, userType], function(err) {
+            if (err) {
+                reject(err);
+            } else {
+                resolve(this.lastID);
+            }
         });
-    }
-    // Company methods
-    async createCompany(companyData) {
-        const sql = `
-            INSERT INTO companies (name, description, industry,email, phone, address)
-            VALUES (?, ?, ?, ?, ?, ?, ?)
-        `;
-
-        return new Promise((resolve, reject) => {
-            this.db.run(sql, [
-                companyData.name,
-                companyData.description,
-                companyData.industry,
-                companyData.websiteUrl,
-                companyData.email,
-                companyData.phone,
-                companyData.address
-            ], function(err) {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(this.lastID);
-                }
-            });
-        });
-    }
-
+    });
+}
     // Job posting methods
     async createJobPosting(jobData) {
         const sql = `

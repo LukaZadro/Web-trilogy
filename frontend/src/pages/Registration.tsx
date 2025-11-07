@@ -29,7 +29,7 @@ const Registration: React.FC = () => {
         setLoading(true);
         try {
             const res = await fetch(
-                `${process.env.REACT_APP_API_URL || ""}/api/auth/register`,
+                `${"http://localhost:3001"}/api/auth/register`,
                 {
                     method: "POST",
                     headers: {

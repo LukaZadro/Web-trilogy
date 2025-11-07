@@ -22,12 +22,19 @@ const Login: React.FC = () => {
 
     setLoading(true);
     try {
-      // TODO: pozovi API ovdje (fetch/axios)
-      // primjer:
-      // const res = await fetch("/api/auth/login", { method: "POST", body: JSON.stringify({ email, password }) })
-      // if (!res.ok) throw new Error("Neuspjela prijava");
-
-      // privremeno simuliraj uspjeh
+      const res = await fetch(
+        `${"http://localhost:3001"}/api/auth/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+            password,
+          }),
+        }
+      );
       setTimeout(() => {
         setLoading(false);
         navigate("/"); // nakon uspješne prijave redirect
