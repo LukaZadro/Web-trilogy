@@ -66,6 +66,46 @@ app.post("/api/auth/login", async (req, res) => {
     }
 });
 
+
+app.get('/api/role/users', async (req, res) => {
+    try {
+        const role = req.query.role;
+        const users = await database.getUsersByRole(role);
+        const publicUsers = users.map(user => ({
+            id: user.id,
+            email: user.email,
+            firstName: user.first_name,
+            lastName: user.last_name,
+            role: user.user_type
+        }));
+        res.json({ users: publicUsers });
+    } catch (err) {
+        console.error("Get users by role error:", err);
+        res.status(500).json({ error: "Internal server error" });
+    }   
+});
+
+app.get("/api/job-postings", async (req, res) => {
+    try {
+        const jobPostings = await database.getAllJobPostings();
+        res.json({ jobPostings });
+    } catch (err) {
+        console.error("Get job postings error:", err);
+        res.status(500).json({ error: "Internal server error" });
+    }
+});
+
+app.post("/api/job-postings", async (req, res) => {
+    try {
+        const jobData = req.body;
+        const jobId = await database.createJobPosting(jobData);
+        res.status(201).json({ jobId });
+    } catch (err) {
+        console.error("Create job posting error:", err);
+        res.status(500).json({ error: "Internal server error" });
+    }
+});
+
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
 });

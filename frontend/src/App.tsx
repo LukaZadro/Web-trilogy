@@ -43,7 +43,7 @@ const App = () => (
           <Route path="/register" element={<Registration />} />
           <Route path="/sastavnice" element={<Sastavnice />} />
           <Route path="/sastavnice/:collid" element={<DetailSastavnica />} />
-          <Route path="/:role/kreiraj-oglas" element={<JobPosting />} />
+          <Route path="/:role/objava-poslova" element={<JobPosting />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

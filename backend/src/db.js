@@ -1,23 +1,22 @@
-const sqlite3 = require('sqlite3').verbose();
-const path = require('path');
-const fs = require('fs').promises;
-
+const sqlite3 = require("sqlite3").verbose();
+const path = require("path");
+const fs = require("fs").promises;
 
 //OPREZ!!! NEMA PASSWORD HASHINGA I OSTALE SIGURNOSNE MJERE U OVOM KODU. SAMO JE PRIMJER.
 class Database {
-    constructor(dbPath = './database.db') {
+    constructor(dbPath = "./database.db") {
         this.dbPath = dbPath;
         this.db = null;
-        this.schemaFile = path.join(__dirname, 'schema.sql');
+        this.schemaFile = path.join(__dirname, "schema.sql");
     }
-    
+
     connect() {
         return new Promise((resolve, reject) => {
             this.db = new sqlite3.Database(this.dbPath, (err) => {
                 if (err) {
                     reject(err);
                 } else {
-                    console.log('Connected to SQLite database');
+                    console.log("Connected to SQLite database");
                     resolve();
                 }
             });
@@ -26,16 +25,16 @@ class Database {
 
     async initialize() {
         await this.connect();
-        let schemaSQL = '';
+        let schemaSQL = "";
         try {
-            schemaSQL = await fs.readFile(this.schemaFile, 'utf8');
+            schemaSQL = await fs.readFile(this.schemaFile, "utf8");
         } catch (err) {
-            console.warn('Schema file not found:', this.schemaFile, err);
-            schemaSQL = ''; // fallback to empty
+            console.warn("Schema file not found:", this.schemaFile, err);
+            schemaSQL = ""; // fallback to empty
         }
 
         if (!schemaSQL) {
-            console.log('No schema SQL to execute');
+            console.log("No schema SQL to execute");
             return;
         }
         return new Promise((resolve, reject) => {
@@ -43,7 +42,7 @@ class Database {
                 if (err) {
                     reject(err);
                 } else {
-                    console.log('Database schema initialized');
+                    console.log("Database schema initialized");
                     resolve();
                 }
             });
@@ -52,50 +51,66 @@ class Database {
 
     // User management methods
     async createUser(userData) {
-    const { email, password, firstName, lastName, userType } = userData;
+        const { email, password, firstName, lastName, userType } = userData;
 
-    const sql = `
+        const sql = `
         INSERT INTO users (email, password, first_name, last_name, user_type)
         VALUES (?, ?, ?, ?, ?)
     `;
 
-    return new Promise((resolve, reject) => {
-        this.db.run(sql, [email, password, firstName, lastName, userType], function(err) {
-            if (err) {
-                reject(err);
-            } else {
-                resolve(this.lastID);
-            }
+        return new Promise((resolve, reject) => {
+            this.db.run(
+                sql,
+                [email, password, firstName, lastName, userType],
+                function (err) {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(this.lastID);
+                    }
+                }
+            );
         });
-    });
-}
+    }
     // Job posting methods
     async createJobPosting(jobData) {
+        const {
+            companyName,
+            title,
+            description,
+            location,
+            jobType,
+            applicationDeadline,
+            contactEmail,
+        } = jobData;
+
         const sql = `
-            INSERT INTO job_postings (
-                company_id, title, description, requirements, job_type, 
-                location, salary_range, application_deadline, contact_email
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-        `;
+        INSERT INTO job_postings (
+            company_name, title, description, location, job_type, 
+            application_deadline, contact_email
+        ) VALUES (?, ?, ?, ?, ?, ?, ?)
+    `;
 
         return new Promise((resolve, reject) => {
-            this.db.run(sql, [
-                jobData.companyId,
-                jobData.title,
-                jobData.description,
-                jobData.requirements,
-                jobData.jobType,
-                jobData.location,
-                jobData.salaryRange,
-                jobData.applicationDeadline,
-                jobData.contactEmail
-            ], function(err) {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(this.lastID);
+            this.db.run(
+                sql,
+                [
+                    companyName, // company_name (directly from form)
+                    title, // title
+                    description, // description
+                    location, // location
+                    jobType, // job_type
+                    applicationDeadline, // application_deadline
+                    contactEmail, // contact_email
+                ],
+                function (err) {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(this.lastID);
+                    }
                 }
-            });
+            );
         });
     }
 
@@ -109,37 +124,38 @@ class Database {
         `;
 
         return new Promise((resolve, reject) => {
-            this.db.run(sql, [
-                eventData.title,
-                eventData.description,
-                eventData.eventType,
-                eventData.organizerId,
-                eventData.organizerType,
-                eventData.startDatetime,
-                eventData.endDatetime,
-                eventData.location,
-                eventData.maxAttendees,
-                eventData.isPublic
-            ], function(err) {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(this.lastID);
+            this.db.run(
+                sql,
+                [
+                    eventData.title,
+                    eventData.description,
+                    eventData.eventType,
+                    eventData.organizerId,
+                    eventData.organizerType,
+                    eventData.startDatetime,
+                    eventData.endDatetime,
+                    eventData.location,
+                    eventData.maxAttendees,
+                    eventData.isPublic,
+                ],
+                function (err) {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(this.lastID);
+                    }
                 }
-            });
+            );
         });
     }
 
     // Query methods
-    async getActiveJobPostings() {
+    async getAllJobPostings() {
         const sql = `
-            SELECT jp.*, c.name as company_name, c.industry 
-            FROM job_postings jp
-            JOIN companies c ON jp.company_id = c.id
-            WHERE jp.is_active = 1 AND jp.application_deadline > date('now')
-            ORDER BY jp.posted_date DESC
+            SELECT * FROM job_postings
+            WHERE is_active = 1 AND (application_deadline IS NULL OR application_deadline >= DATE('now'))
+            ORDER BY posted_date DESC
         `;
-
         return new Promise((resolve, reject) => {
             this.db.all(sql, [], (err, rows) => {
                 if (err) {
@@ -151,16 +167,14 @@ class Database {
         });
     }
 
-    async getUpcomingEvents(limit = 10) {
+    async getUsersByRole(role) {
         const sql = `
-            SELECT * FROM student_events 
-            WHERE start_datetime > datetime('now') 
-            ORDER BY start_datetime ASC 
-            LIMIT ?
+            SELECT id, email, first_name, last_name, user_type 
+            FROM users 
+            WHERE user_type = ?
         `;
-
         return new Promise((resolve, reject) => {
-            this.db.all(sql, [limit], (err, rows) => {
+            this.db.all(sql, [role], (err, rows) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -174,9 +188,9 @@ class Database {
         if (this.db) {
             this.db.close((err) => {
                 if (err) {
-                    console.error('Error closing database:', err);
+                    console.error("Error closing database:", err);
                 } else {
-                    console.log('Database connection closed');
+                    console.log("Database connection closed");
                 }
             });
         }

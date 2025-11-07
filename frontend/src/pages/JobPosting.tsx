@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 
 type JobFormValues = {
-  companyId: number | "";
+  companyName: string | "";
   title: string;
   description: string;
   location?: string;
@@ -15,7 +15,7 @@ type JobFormValues = {
 };
 
 const defaultValues: JobFormValues = {
-  companyId: "",
+  companyName: "",
   title: "",
   description: "",
   location: "",
@@ -33,12 +33,10 @@ const CreateJobPosting: React.FC = () => {
     try {
       // ensure companyId is a number
       const payload = {
-        ...data,
-        company_id: Number(data.companyId),
-        application_deadline: data.applicationDeadline || null,
+        ...data
       };
 
-      const res = await fetch(`${process.env.REACT_APP_API_URL || ""}/api/job-postings`, {
+      const res = await fetch(`${"http://localhost:3001"}/api/job-postings`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -51,7 +49,7 @@ const CreateJobPosting: React.FC = () => {
 
       // success: navigate to listings or reset form
       reset();
-      navigate("/"); // change location as needed
+      navigate("/poslodavac"); // change location as needed
     } catch (err: any) {
       // simple inline error handling; replace with UI toast if you have one
       alert(err?.message || "Greška pri kreiranju oglasa");
@@ -66,24 +64,23 @@ const CreateJobPosting: React.FC = () => {
       <Form {...methods}>
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <FormItem>
-            <FormLabel>Company ID</FormLabel>
+            <FormLabel>Company Name</FormLabel>
             <FormField
-              name="companyId"
+              name="companyName"
               control={control}
-              rules={{ required: "Company ID is required"}}
+              rules={{ required: "Company name is required"}}
               render={({ field }) => (
                 <FormControl>
                   <input
                     {...field}
-                    type="number"
+                    type="text"
                     min={1}
                     className="w-full border rounded px-3 py-2"
-                    placeholder="ID kompanije (broj)"
+                    placeholder="Ime kompanije"
                   />
                 </FormControl>
               )}
             />
-            <FormDescription>Id of the company (users.id).</FormDescription>
             <FormMessage />
           </FormItem>
 
