@@ -50,10 +50,12 @@ const Hero = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
+              <Link to="/register">
               <Button size="lg" className="shadow-glow group">
                 Započni sada
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
+              </Link>
             </div>
           </div>
           <img

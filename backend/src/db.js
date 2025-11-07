@@ -1,5 +1,6 @@
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
+const fs = require('fs').promises;
 
 
 //OPREZ!!! NEMA PASSWORD HASHINGA I OSTALE SIGURNOSNE MJERE U OVOM KODU. SAMO JE PRIMJER.
@@ -7,8 +8,9 @@ class Database {
     constructor(dbPath = './database.db') {
         this.dbPath = dbPath;
         this.db = null;
+        this.schemaFile = path.join(__dirname, 'schema.sql');
     }
-
+    
     connect() {
         return new Promise((resolve, reject) => {
             this.db = new sqlite3.Database(this.dbPath, (err) => {
@@ -24,10 +26,18 @@ class Database {
 
     async initialize() {
         await this.connect();
-        const schemaSQL = `
-            ${this.getSchemaSQL()}
-        `;
-        
+        let schemaSQL = '';
+        try {
+            schemaSQL = await fs.readFile(this.schemaFile, 'utf8');
+        } catch (err) {
+            console.warn('Schema file not found:', this.schemaFile, err);
+            schemaSQL = ''; // fallback to empty
+        }
+
+        if (!schemaSQL) {
+            console.log('No schema SQL to execute');
+            return;
+        }
         return new Promise((resolve, reject) => {
             this.db.exec(schemaSQL, (err) => {
                 if (err) {
@@ -53,7 +63,7 @@ class Database {
 
         const sql = `
             INSERT INTO users (email, password, first_name, last_name,user_type)
-            VALUES (?, ?, ?, ?)
+            VALUES (?, ?, ?, ?, ?)
         `;
 
         return new Promise((resolve, reject) => {
@@ -66,52 +76,6 @@ class Database {
             });
         });
     }
-
-    async createStudent(studentData) {
-        const sql = `
-            INSERT INTO students (user_id, student_id_number, major)
-            VALUES (?, ?, ?, ?, ?)
-        `;
-
-        return new Promise((resolve, reject) => {
-            this.db.run(sql, [
-                studentData.userId,
-                studentData.studentIdNumber,
-                studentData.major
-            ], function(err) {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(this.lastID);
-                }
-            });
-        });
-    }
-
-    async createAlumni(alumniData) {
-        const sql = `
-            INSERT INTO alumni (user_id,major)
-            VALUES (?, ?, ?, ?, ?, ?)
-        `;
-
-        return new Promise((resolve, reject) => {
-            this.db.run(sql, [
-                alumniData.userId,
-                alumniData.graduationYear,
-                alumniData.degree,
-                alumniData.major,
-                alumniData.currentJobTitle,
-                alumniData.linkedinUrl
-            ], function(err) {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(this.lastID);
-                }
-            });
-        });
-    }
-
     // Company methods
     async createCompany(companyData) {
         const sql = `
@@ -237,27 +201,6 @@ class Database {
                 }
             });
         });
-    }
-
-    async getUserByEmail(email) {
-        const sql = `SELECT * FROM users WHERE email = ?`;
-        
-        return new Promise((resolve, reject) => {
-            this.db.get(sql, [email], (err, row) => {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(row);
-                }
-            });
-        });
-    }
-
-    
-    getSchemaSQL() {
-        return `
-        
-        `;
     }
     // Close database connection
     close() {
