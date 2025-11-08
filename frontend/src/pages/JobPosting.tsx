@@ -55,7 +55,7 @@ const CreateJobPosting = () => {
       });
 
       const body = await res.json();
-      console.log(body);
+
       if (!res.ok) {
         throw new Error(
           body?.error || body?.message || "Failed to create job posting"

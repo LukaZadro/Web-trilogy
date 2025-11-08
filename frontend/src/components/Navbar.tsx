@@ -73,7 +73,11 @@ const Navbar = () => {
                 {newData[role.id - 1].sections.map((sec, ind) => (
                   <Link
                     key={ind}
-                    to={`/${user.role}/${sec.pathname}`}
+                    to={
+                      sec.title === "forum"
+                        ? `/${sec.pathname}`
+                        : `/${user.role}/${sec.pathname}`
+                    }
                     className="text-foreground hover:text-primary transition-colors"
                   >
                     {sec.title.toUpperCase()}

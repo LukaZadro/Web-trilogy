@@ -11,6 +11,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { MapPin, Search, Calendar } from "lucide-react";
 import { useEffect, useState } from "react";
+import Footer from "@/components/Footer";
 
 const EventManagement = () => {
   const [query, setQuery] = useState("");
@@ -149,6 +150,7 @@ const EventManagement = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

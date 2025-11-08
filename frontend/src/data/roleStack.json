@@ -19,7 +19,7 @@
     },
     {
         "id":4,
-        "role":"studentska organizacija",
+        "role":"udruga",
         "sections":[{"title":"objava događanja", "pathname":"objava-dogadjanja"},{"title":"pregled kandidata", "pathname":""},{"title":"upravljanje oglasima", "pathname":"upravljanje-dogadajima"},{"title":"forum", "pathname":"forum"}],
         "description":["Objavi događanja i radionice za studente i alumnije.","Pregledaj profile kandidata i pronađi idealne kandidate za svoje potrebe.","Upravljaj svojim oglasima i prati prijave na jednom mjestu.","Sudjeluj u forumima i poveži se s drugim udrugama."]
     }
