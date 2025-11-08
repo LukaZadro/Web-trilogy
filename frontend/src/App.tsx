@@ -22,6 +22,7 @@ import { UserProvider } from "./context/UserProvider";
 import JobManagement from "./pages/JobManagement";
 import EventPosting from "./pages/EventPosting";
 import EventManagement from "./pages/EventManagement";
+import Forum from "./pages/Forum";
 
 const queryClient = new QueryClient();
 
@@ -58,6 +59,7 @@ const App = () => (
               path="/:role/upravljanje-oglasima"
               element={<JobManagement />}
             />
+            <Route path="/forum" element={<Forum />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
