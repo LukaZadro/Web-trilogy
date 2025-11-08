@@ -18,6 +18,7 @@ import Projects from "./pages/Projects";
 import Sastavnice from "./pages/Sastavnice";
 import JobPosting from "./pages/JobPosting";
 import DetailSastavnica from "./pages/DetailSastavnica";
+import Forum from "./pages/Forum";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +32,7 @@ const App = () => (
           <Route path="/" element={<Home />} />
           <Route path="/prijava" element={<Login />} />
           <Route path="/registracija" element={<Registration />} />
+          <Route path="/forum" element={<Forum />} />
           <Route path="/:path" element={<Manual />} />
           <Route path="/:role/ponuda-poslova" element={<Jobs />} />
           <Route path="/:role/dogadanja" element={<Events />} />
