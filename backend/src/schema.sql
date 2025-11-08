@@ -1,12 +1,10 @@
--- Enable foreign keys
-PRAGMA foreign_keys = ON;
 CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     email VARCHAR(255) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
     first_name VARCHAR(100) NOT NULL,
     last_name VARCHAR(100) NOT NULL,
-    user_type TEXT CHECK(user_type IN ('student', 'alumni', 'studentska organizacija', 'poslodavac','admin')) NOT NULL
+    user_type TEXT CHECK(user_type IN ('student', 'alumni', 'udruga', 'poslodavac','admin')) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS job_postings (
@@ -14,6 +12,7 @@ CREATE TABLE IF NOT EXISTS job_postings (
     company_name TEXT NOT NULL,
     title VARCHAR(255) NOT NULL,
     description TEXT NOT NULL,
+    domain TEXT,
     location VARCHAR(255),
     job_type TEXT CHECK(job_type IN ('posao', 'studentski-posao', 'internship')) NOT NULL,
     application_deadline DATE,
@@ -35,16 +34,11 @@ CREATE TABLE IF NOT EXISTS student_events (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title VARCHAR(255) NOT NULL,
     description TEXT,
-    event_type VARCHAR(100),
-    organizer_id INTEGER,
-    organizer_type TEXT CHECK(organizer_type IN ('organization', 'college', 'company')) DEFAULT 'college',
+    domain TEXT,
+    organizer TEXT,
     start_datetime DATETIME NOT NULL,
     end_datetime DATETIME NOT NULL,
-    location VARCHAR(255),
-    max_attendees INTEGER,
-    is_public BOOLEAN DEFAULT 1,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (organizer_id) REFERENCES student_organizations(id) ON DELETE SET NULL
+    location VARCHAR(255)
 );
 
 
@@ -54,9 +48,7 @@ CREATE TABLE IF NOT EXISTS job_applications (
     user_id INTEGER NOT NULL,
     application_date DATETIME DEFAULT CURRENT_TIMESTAMP,
     status TEXT CHECK(status IN ('pending', 'reviewed', 'accepted', 'rejected')) DEFAULT 'pending',
-    cover_letter TEXT,
-    FOREIGN KEY (job_posting_id) REFERENCES job_postings(id) ON DELETE CASCADE,
-    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+    cover_letter TEXT
 );
 
 

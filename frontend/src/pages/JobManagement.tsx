@@ -10,31 +10,10 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Briefcase, MapPin, Clock, Search } from "lucide-react";
-import data from "../data/test-job.json";
 import { useEffect, useState } from "react";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import domains_faculty from "@/data/domains_faculty";
 
-interface Jobs {
-  id: number;
-  title: string;
-  company: string;
-  location: string;
-  type: string;
-  faculty: string;
-  domain: string;
-  description: string;
-  posted: string;
-}
-
-const Jobs = () => {
-  //const jobs: Jobs[] = JSON.parse(JSON.stringify(data));
+const JobManagement = () => {
+  const [query, setQuery] = useState("");
 
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -57,17 +36,29 @@ const Jobs = () => {
     fetchJobs();
   }, []);
 
-  const [query, setQuery] = useState("");
-  const [selectedDomain, setSelectedDomain] = useState("all");
+  const handleDelete = async (id) => {
+    if (!window.confirm("Želite li obrisati oglas za posao?")) return;
 
-  const selectedJobs =
-    selectedDomain === "all"
-      ? jobs
-      : jobs.filter((job) => job.domain === selectedDomain);
+    try {
+      const res = await fetch(
+        `${"http://localhost:3001"}/api/job-postings/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
+
+      if (!res.ok) throw new Error("Greška u brisanju oglasa.");
+
+      setJobs((prev) => prev.filter((job) => job.id !== id));
+    } catch (err) {
+      console.error("Error deleting job:", err);
+      alert("Error deleting job.");
+    }
+  };
 
   //filtriranje poslova
-  const filteredJobs = selectedJobs.filter((job) =>
-    `${job.title} ${job.company} ${job.location} ${job.job_type}`
+  const filteredJobs = jobs.filter((job) =>
+    `${job.title} ${job.company_name} ${job.location} ${job.type} ${job.finalDate}`
       .toLowerCase()
       .includes(query.toLowerCase())
   );
@@ -80,10 +71,10 @@ const Jobs = () => {
         <div className="max-w-5xl mx-auto space-y-8">
           <div className="space-y-4">
             <h1 className="text-4xl md:text-5xl font-bold text-foreground">
-              Ponuda poslova i praksi
+              Vaši oglasi za posao:
             </h1>
             <p className="text-xl text-muted-foreground">
-              Pronađi savršenu priliku za razvoj vlastite karijere
+              Upravljajte Vašim oglasima za posao.
             </p>
           </div>
 
@@ -91,44 +82,17 @@ const Jobs = () => {
           <div className="relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
             <Input
-              placeholder="Pretraži poslove, prakse, kompanije..."
+              placeholder="Pretraži poslove, prakse..."
               className="pl-12 h-12 shadow-soft"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
             />
           </div>
 
-          <p className="text-xl text-muted-foreground">
-            Filtrirajte prema područjima sastavnica Sveučilišta
-          </p>
-
-          {/* Filter */}
-          <div className="relative ">
-            <Select onValueChange={setSelectedDomain} defaultValue="all">
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder="Odaberite područje sastavnice Sveučilišta" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">
-                  Sva područja sastavnica Sveučilišta
-                </SelectItem>
-                {domains_faculty.map((domain, index) => (
-                  <SelectItem
-                    key={index}
-                    value={domain}
-                    className="hover:bg-blue-600"
-                  >
-                    {domain}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-
           {/* Popis poslova */}
           <div className="space-y-4">
             {filteredJobs.length > 0 ? (
-              filteredJobs.map((job) => (
+              filteredJobs.map((job, ind) => (
                 <Card
                   key={job.id}
                   className="shadow-soft hover:shadow-medium transition-all duration-300 "
@@ -160,14 +124,19 @@ const Jobs = () => {
                       </div>
                       <div className="flex items-center gap-2">
                         <Clock className="h-4 w-4" />
-                        {job.posted_date}
+                        {job.application_deadline}
                       </div>
                     </div>
                     <div className="flex flex-col md:flex-row gap-4 md:gap-2 justify-end">
                       <Button className="w-full md:w-auto bg-primary/10 text-primary hover:bg-primary/20">
-                        Saznaj više
+                        Uredi
                       </Button>
-                      <Button className="w-full md:w-auto">Prijavi se</Button>
+                      <Button
+                        className="w-full md:w-auto bg-red-500 hover:bg-red-300"
+                        onClick={() => handleDelete(job.id)}
+                      >
+                        Obriši
+                      </Button>
                     </div>
                   </CardContent>
                 </Card>
@@ -184,4 +153,4 @@ const Jobs = () => {
   );
 };
 
-export default Jobs;
+export default JobManagement;
