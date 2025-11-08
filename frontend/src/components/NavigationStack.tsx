@@ -1,11 +1,17 @@
+import path from "path";
 import data from "../data/roleStack.json";
 import data_2 from "../data/roles.json";
 import { Link } from "react-router-dom";
 
 interface RolesStack {
   id: number;
-  sections: string[];
+  sections: Section[];
   description: string[];
+}
+
+interface Section {
+  title: string;
+  pathname: string;
 }
 
 interface Roles {
@@ -25,20 +31,22 @@ const NavigationStack = ({ role_id }) => {
         Odaberite područje koje Vas zanima:
       </p>
       <div className="flex flex-col justify-center items-center w-full gap-4">
-        {newData[role_id].sections.map((sec, ind) => (
-          <Link
-            to={`/${newData_2[role_id].title}/${sec}`}
-            key={`${ind}`}
-            className="w-full md:w-[60%] bg-white"
-          >
+        {newData[role_id].sections.map((sec, ind) => {
+
+          return (
+            <Link
+              to={sec.title === "forum" ? `/forum` : `/${newData_2[role_id].title}/${sec.pathname}`}
+              key={`${ind}`}
+              className="w-full md:w-[60%] bg-white"
+            >
             <div className="w-full flex flex-col md:flex-row text-center items-center gap-4 bg-white p-6 rounded-2xl shadow-soft hover:shadow-medium border border-border hover:text-blue-600">
               <h3 className="font-semibold text-lg mb-2">
-                {sec.toUpperCase()}
+                {sec.title.toUpperCase()}
               </h3>{" "}
               <p className="mb-2">- {newData[role_id].description[ind]}</p>
             </div>
           </Link>
-        ))}
+        )})}
       </div>
     </section>
   );

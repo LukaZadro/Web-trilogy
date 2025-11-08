@@ -6,6 +6,7 @@ import ClassicTemplate from "@/components/cv/templates/ClassicTemplate";
 import MinimalTemplate from "@/components/cv/templates/MinimalTemplate";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import Footer from "@/components/Footer";
 
 export interface CVData {
   personalInfo: {
@@ -51,7 +52,9 @@ const CVBuilder = () => {
     languages: [],
   });
 
-  const [selectedTemplate, setSelectedTemplate] = useState<"modern" | "classic" | "minimal">("modern");
+  const [selectedTemplate, setSelectedTemplate] = useState<
+    "modern" | "classic" | "minimal"
+  >("modern");
 
   const handlePrint = () => {
     window.print();
@@ -73,35 +76,46 @@ const CVBuilder = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <main className="container mx-auto px-4 py-8 mt-16">
-        <div className="mb-8">
-          <h1 className="text-4xl font-bold mb-2 text-foreground">CV Builder</h1>
-          <p className="text-muted-foreground">Create a professional CV with our templates</p>
-        </div>
-
-        <div className="grid lg:grid-cols-2 gap-8">
-          <div className="space-y-6">
-            <CVForm data={cvData} onChange={setCvData} />
+      <div className="container mx-auto px-4 pt-[120px] pb-16">
+        <main className="container mx-auto px-4 py-8 mt-16">
+          <div className="mb-8">
+            <h1 className="text-4xl font-bold mb-2 text-foreground">
+              CV Graditelj
+            </h1>
+            <p className="text-muted-foreground">
+              Izradi svoj profesionalni životopis koristeći naš jednostavan i
+              intuitivan CV Graditelj
+            </p>
           </div>
 
-          <div className="space-y-4 print:col-span-2">
-            <div className="flex items-center justify-between print:hidden">
-              <Tabs value={selectedTemplate} onValueChange={(v) => setSelectedTemplate(v as any)}>
-                <TabsList>
-                  <TabsTrigger value="modern">Modern</TabsTrigger>
-                  <TabsTrigger value="classic">Classic</TabsTrigger>
-                  <TabsTrigger value="minimal">Minimal</TabsTrigger>
-                </TabsList>
-              </Tabs>
-              <Button onClick={handlePrint}>Download PDF</Button>
+          <div className="grid lg:grid-cols-2 gap-8">
+            <div className="space-y-6">
+              <CVForm data={cvData} onChange={setCvData} />
             </div>
 
-            <div className="border rounded-lg bg-card print:border-0">
-              {renderTemplate()}
+            <div className="space-y-4 print:col-span-2">
+              <div className="flex items-center justify-between print:hidden">
+                <Tabs
+                  value={selectedTemplate}
+                  onValueChange={(v) => setSelectedTemplate(v as any)}
+                >
+                  <TabsList>
+                    <TabsTrigger value="modern">Modern</TabsTrigger>
+                    <TabsTrigger value="classic">Classic</TabsTrigger>
+                    <TabsTrigger value="minimal">Minimal</TabsTrigger>
+                  </TabsList>
+                </Tabs>
+                <Button onClick={handlePrint}>Preuzmi PDF</Button>
+              </div>
+
+              <div className="border rounded-lg bg-card print:border-0">
+                {renderTemplate()}
+              </div>
             </div>
           </div>
-        </div>
-      </main>
+        </main>
+      </div>
+      <Footer />
     </div>
   );
 };

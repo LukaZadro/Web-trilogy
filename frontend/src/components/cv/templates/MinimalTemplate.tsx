@@ -24,16 +24,22 @@ const MinimalTemplate = ({ data }: TemplateProps) => {
             {data.personalInfo.phone && <span>•</span>}
             {data.personalInfo.phone && <span>{data.personalInfo.phone}</span>}
             {data.personalInfo.location && <span>•</span>}
-            {data.personalInfo.location && <span>{data.personalInfo.location}</span>}
+            {data.personalInfo.location && (
+              <span>{data.personalInfo.location}</span>
+            )}
             {data.personalInfo.linkedin && <span>•</span>}
-            {data.personalInfo.linkedin && <span>{data.personalInfo.linkedin}</span>}
+            {data.personalInfo.linkedin && (
+              <span>{data.personalInfo.linkedin}</span>
+            )}
           </div>
         </div>
 
         {/* Summary */}
         {data.summary && (
           <div className="mb-8">
-            <p className="text-foreground text-sm leading-loose">{data.summary}</p>
+            <p className="text-foreground text-sm leading-loose">
+              {data.summary}
+            </p>
           </div>
         )}
 
@@ -41,18 +47,24 @@ const MinimalTemplate = ({ data }: TemplateProps) => {
         {data.experience.length > 0 && (
           <div className="mb-8">
             <h2 className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-4">
-              Experience
+              Iskustvo
             </h2>
             {data.experience.map((exp, index) => (
               <div key={index} className="mb-6">
                 <div className="flex justify-between items-baseline mb-1">
-                  <h3 className="font-medium text-foreground">{exp.position}</h3>
+                  <h3 className="font-medium text-foreground">
+                    {exp.position}
+                  </h3>
                   <span className="text-xs text-muted-foreground">
                     {formatDate(exp.startDate)} - {formatDate(exp.endDate)}
                   </span>
                 </div>
-                <p className="text-sm text-muted-foreground mb-2">{exp.company}</p>
-                <p className="text-sm text-foreground leading-relaxed">{exp.description}</p>
+                <p className="text-sm text-muted-foreground mb-2">
+                  {exp.company}
+                </p>
+                <p className="text-sm text-foreground leading-relaxed">
+                  {exp.description}
+                </p>
               </div>
             ))}
           </div>
@@ -62,18 +74,26 @@ const MinimalTemplate = ({ data }: TemplateProps) => {
         {data.education.length > 0 && (
           <div className="mb-8">
             <h2 className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-4">
-              Education
+              Obrazovanje
             </h2>
             {data.education.map((edu, index) => (
               <div key={index} className="mb-4">
                 <div className="flex justify-between items-baseline mb-1">
-                  <h3 className="font-medium text-foreground">{edu.degree} - {edu.field}</h3>
+                  <h3 className="font-medium text-foreground">
+                    {edu.degree} - {edu.field}
+                  </h3>
                   <span className="text-xs text-muted-foreground">
                     {formatDate(edu.startDate)} - {formatDate(edu.endDate)}
                   </span>
                 </div>
-                <p className="text-sm text-muted-foreground">{edu.institution}</p>
-                {edu.gpa && <p className="text-xs text-muted-foreground mt-1">GPA: {edu.gpa}</p>}
+                <p className="text-sm text-muted-foreground">
+                  {edu.institution}
+                </p>
+                {edu.gpa && (
+                  <p className="text-xs text-muted-foreground mt-1">
+                    GPA: {edu.gpa}
+                  </p>
+                )}
               </div>
             ))}
           </div>
@@ -83,9 +103,11 @@ const MinimalTemplate = ({ data }: TemplateProps) => {
         {data.skills.length > 0 && (
           <div className="mb-8">
             <h2 className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-4">
-              Skills
+              Vještine
             </h2>
-            <p className="text-sm text-foreground leading-relaxed">{data.skills.join(", ")}</p>
+            <p className="text-sm text-foreground leading-relaxed">
+              {data.skills.join(", ")}
+            </p>
           </div>
         )}
 
@@ -93,9 +115,11 @@ const MinimalTemplate = ({ data }: TemplateProps) => {
         {data.languages.length > 0 && (
           <div className="mb-8">
             <h2 className="text-xs font-semibold text-muted-foreground uppercase tracking-widest mb-4">
-              Languages
+              Jezici
             </h2>
-            <p className="text-sm text-foreground leading-relaxed">{data.languages.join(", ")}</p>
+            <p className="text-sm text-foreground leading-relaxed">
+              {data.languages.join(", ")}
+            </p>
           </div>
         )}
       </div>

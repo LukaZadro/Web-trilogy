@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "name": "DEBUG IT Conference 2025",
+        "date_from": "2025-09-15",
+        "date_to": "2025-09-16",
+        "location": "Zagreb, Croatia",
+        "organizer": "DEBUG d.o.o.",
+        "domain": "Tehničko područje",
+        "description": "Konferencija o najnovijim tehnologijama i trendovima u IT industriji."
+    },
+    {
+        "id": 2,
+        "name": "Bijeg u botaniku",
+        "date_from": "2025-10-05",
+        "date_to": "2025-10-05",
+        "location": "Split, Croatia",
+        "organizer": "Prirodoslovni muzej",
+        "domain": "Prirodoslovno područje",
+        "description": "Radionica o osnovama botanike i prepoznavanju biljaka u prirodi."
+    },
+    {
+        "id": 3,
+        "name": "Digital Marketing Summit",
+        "date_from": "2025-11-20",
+        "date_to": "2025-11-21",
+        "location": "Rijeka, Croatia",
+        "organizer": "Digital Agency",
+        "domain": "Ekonomsko područje",
+        "description": "Summit posvećen najnovijim strategijama i alatima u digitalnom marketingu."
+    },
+    {
+        "id": 4,
+        "name": "Arhitektura budućnosti",
+        "date_from": "2025-12-10",
+        "date_to": "2025-12-12",
+        "location": "Zagreb, Croatia",
+        "organizer": "Arhitektonski fakultet u Zagrebu",
+        "domain": "Tehničko područje",
+        "description": "Simpozij o inovacijama i održivosti u suvremenoj arhitekturi."
+    }
+]

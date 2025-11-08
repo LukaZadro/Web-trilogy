@@ -1,0 +1,63 @@
+[
+    {
+        "id": 1,
+        "name": "Istraživanje AI u obrazovanju",
+        "date_from": "2025-09-15",
+        "date_to": "2025-09-16",
+        "location": "Zagreb, Croatia",
+        "organizer": "Fakultet elektrotehnike i računarstva",
+        "faculty": "Fakultet elektrotehnike i računarstva",
+        "description": "Projekt istražuje primjenu umjetne inteligencije u prilagodbi obrazovnih sadržaja.",
+        "positions_available": 5,
+        "position_type": "softverski inženjer"
+    },
+    {
+        "id": 2,
+        "name": "Održivi urbani razvoj",
+        "date_from": "2025-10-01",
+        "date_to": "2025-10-31",
+        "location": "Split, Croatia",
+        "organizer": "Arhitektonski fakultet",
+        "faculty": "Arhitektonski fakultet",
+        "description": "Projekt fokusiran na razvoj održivih urbanih prostora kroz inovativne arhitektonske pristupe.",
+        "positions_available": 3,
+        "position_type": "urbanistički planer"
+    },
+    {
+        "id": 3,
+        "name": "Analiza podataka u zdravstvu",
+        "date_from": "2025-11-05",
+        "date_to": "2025-12-05",
+        "location": "Rijeka, Croatia",
+        "organizer": "Medicinski fakultet",
+        "faculty": "Medicinski fakultet",
+        "description": "Projekt se bavi analizom velikih skupova podataka za poboljšanje zdravstvenih usluga.",
+        "positions_available": 4,
+        "position_type": "data scientist"
+    },
+    {
+        "id": 4,
+        "name": "Digitalni marketing za mala poduzeća",
+        "date_from": "2025-09-20",
+        "date_to": "2025-10-20",
+        "location": "Zagreb, Croatia",
+        "organizer": "Ekonomski fakultet",
+        "faculty": "Ekonomski fakultet",
+        "description": "Projekt pomaže malim poduzećima u razvoju učinkovitih digitalnih marketinških strategija.",
+        "positions_available": 2,
+        "position_type": "marketing stručnjak"
+    },
+    {
+        "id": 5,
+        "name": "Razvoj mobilnih aplikacija za turizam",
+        "date_from": "2025-10-10",
+        "date_to": "2025-11-10",
+        "location": "Dubrovnik, Croatia",
+        "organizer": "Fakultet elektrotehnike i računarstva",
+        "faculty": "Fakultet elektrotehnike i računarstva",
+        "description": "Projekt fokusiran na razvoj inovativnih mobilnih aplikacija za poboljšanje turističkog iskustva.",
+        "positions_available": 6,
+        "position_type": "mobilni developer"
+    }
+    
+]

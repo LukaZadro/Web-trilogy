@@ -1,22 +1,26 @@
 [
     {
         "id":1,
-        "sections":["događanja","karijera","ponuda poslova", "projekti", "forum"],
-        "description":["Pronađi najnovija događanja i radionice za studente.","Istraži mogućnosti karijere i savjete za razvoj karijere. Izradi vlastiti životopis CV.","Pregledaj ponude poslova prilagođene studentima.","Pridruži se projektima i stekni praktično iskustvo.","Sudjeluj u forumima i poveži se s vršnjacima."]
+        "role":"student",
+        "sections":[{"title":"događanja", "pathname":"dogadanja"},{"title":"karijera", "pathname":"karijera"},{"title":"ponuda poslova", "pathname":"ponuda-poslova"},{"title":"projekti", "pathname":"projekti"},{"title":"mentorstvo", "pathname":"mentorstvo"},{"title":"forum", "pathname":"forum"}],
+        "description":["Pronađi najnovija događanja i radionice za studente.","Istraži mogućnosti karijere i savjete za razvoj karijere. Izradi vlastiti životopis CV.","Pregledaj ponude poslova prilagođene studentima.","Pridruži se projektima i stekni praktično iskustvo.", "Pronađi mentora za završni ili diplomski rad.","Sudjeluj u forumima i poveži se s vršnjacima."]
     },
     {
         "id":2,
-        "sections":["događanja","karijera","ponuda poslova","forum"],
-        "description":["Ostani informiran o događanjima i radionicama za alumnije.","Istraži mogućnosti karijere i savjete za razvoj karijere nakon diplome.","Pregledaj ponude poslova prilagođene alumnijima.","Sudjeluj u forumima i poveži se s ostalim alumnijima."]
+        "role":"alumni",
+        "sections":[{"title":"događanja", "pathname":"dogadanja"},{"title":"karijera", "pathname":"karijera"},{"title":"ponuda poslova", "pathname":"ponuda-poslova"},{"title":"mentorstvo", "pathname":"mentorstvo"},{"title":"forum", "pathname":"forum"}],
+        "description":["Ostani informiran o događanjima i radionicama za alumnije.","Istraži mogućnosti karijere i savjete za razvoj karijere nakon diplome.","Pregledaj ponude poslova prilagođene alumnijima.","Pronađi studenta za istraživanje i mentoriraj ga.","Sudjeluj u forumima i poveži se s ostalim alumnijima."]
     },
     {
         "id":3,
-        "sections":["objava poslova","pregled kandidata","upravljanje oglasima","forum"],
+        "role":"poslodavac",
+        "sections":[{"title":"objava poslova", "pathname":"objava-poslova"},{"title":"pregled kandidata", "pathname":""},{"title":"upravljanje oglasima", "pathname":"upravljanje-oglasima"},{"title":"forum", "pathname":"forum"}],
         "description":["Objavi otvorene pozicije i pronađi talentirane studente i alumnije.","Pregledaj profile kandidata i pronađi idealne kandidate za svoje potrebe.","Upravljaj svojim oglasima i prati prijave na jednom mjestu.","Sudjeluj u forumima i poveži se s drugim poslodavcima."]
     },
     {
         "id":4,
-        "sections":["objava događanja", "pregled kandidata", "upravljanje oglasima", "forum"],
+        "role":"studentska organizacija",
+        "sections":[{"title":"objava događanja", "pathname":"objava-dogadjanja"},{"title":"pregled kandidata", "pathname":""},{"title":"upravljanje oglasima", "pathname":"upravljanje-dogadajima"},{"title":"forum", "pathname":"forum"}],
         "description":["Objavi događanja i radionice za studente i alumnije.","Pregledaj profile kandidata i pronađi idealne kandidate za svoje potrebe.","Upravljaj svojim oglasima i prati prijave na jednom mjestu.","Sudjeluj u forumima i poveži se s drugim udrugama."]
     }
 ]

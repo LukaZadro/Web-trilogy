@@ -1,0 +1,46 @@
+[
+    {
+      "id": 1,
+      "title": "Frontend Developer - Praksa",
+      "company": "Tech Solutions",
+      "location": "Zagreb",
+      "type": "Praksa",
+      "faculty": "FER",
+      "description": "Tražimo motiviranog studenta za rad na React projektima.",
+      "domain": "Tehničko područje",
+      "posted": "Prije 2 dana"
+    },
+    {
+      "id": 2,
+      "title": "Marketing Stažist",
+      "company": "Digital Agency",
+      "location": "Split",
+      "type": "Student poslovi",
+      "faculty": "Ekonomski fakultet",
+      "description": "Priključi se našem marketing timu i radi na zanimljivim kampanjama.",
+      "domain": "Društveno područje",
+      "posted": "Prije 1 tjedan"
+    },
+    {
+      "id": 3,
+      "title": "Junior Data Analyst",
+      "company": "Analytics Corp",
+      "location": "Zagreb",
+      "type": "Posao",
+      "faculty": "PMF",
+      "description": "Tražimo analitičara podataka za rad s velikim datasetovima.",
+      "domain": "Prirodoslovno područje",
+      "posted": "Prije 3 dana"
+    },
+    {
+      "id": 4,
+      "title": "UI/UX Designer - Praksa",
+      "company": "Design Studio",
+      "location": "Rijeka",
+      "type": "Praksa",
+      "faculty": "Arhitektonski fakultet",
+      "description": "Prilike za rad na raznovrsnim dizajnerskim projektima.",
+      "domain": "Tehničko područje",
+      "posted": "Prije 5 dana"
+    }
+  ]

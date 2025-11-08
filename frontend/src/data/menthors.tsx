@@ -1,0 +1,43 @@
+const mentors = [
+  {
+    id: 1,
+    name: "Ana Horvat",
+    role: "Senior Software Engineer",
+    company: "Google",
+    faculty: "FER",
+    year: "2015",
+    expertise: ["Backend Development", "Cloud Architecture", "Team Leadership"],
+    bio: "10+ godina iskustva u razvoju softverskih rješenja i vođenju timova.",
+  },
+  {
+    id: 2,
+    name: "Marko Kovačić",
+    role: "Marketing Director",
+    company: "Coca-Cola",
+    faculty: "Ekonomski fakultet",
+    year: "2012",
+    expertise: ["Digital Marketing", "Brand Strategy", "Analytics"],
+    bio: "Specijaliziran za razvoj globalnih marketing strategija.",
+  },
+  {
+    id: 3,
+    name: "Petra Novak",
+    role: "Data Scientist",
+    company: "Microsoft",
+    faculty: "PMF",
+    year: "2016",
+    expertise: ["Machine Learning", "Data Analysis", "Python"],
+    bio: "Fokusirana na primjenu AI u rješavanju poslovnih izazova.",
+  },
+  {
+    id: 4,
+    name: "Ivan Babić",
+    role: "UX Design Lead",
+    company: "Airbnb",
+    faculty: "Arhitektonski fakultet",
+    year: "2014",
+    expertise: ["User Research", "Product Design", "Figma"],
+    bio: "Strast za stvaranje intuitivnih i lijepih korisničkih iskustava.",
+  },
+];
+export default mentors;

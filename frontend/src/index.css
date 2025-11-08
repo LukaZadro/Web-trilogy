@@ -41,6 +41,8 @@ All colors MUST be HSL.
 
     --radius: 0.75rem;
 
+    --heroLight: 14 91% 62%;
+
     --gradient-hero: linear-gradient(135deg, #0846aa77 0%, #3c83f677 100%);
     --gradient-card: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
     --shadow-soft: 0 4px 6px -1px #0846aa1a, 0 2px 4px -1px hsl(217 91% 35% / 0.06);
