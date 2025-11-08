@@ -9,9 +9,8 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Briefcase, MapPin, Clock, Search, Calendar } from "lucide-react";
-import data from "../data/test-event.json";
-import { useState } from "react";
+import { MapPin, Search, Calendar } from "lucide-react";
+import { useEffect, useState } from "react";
 import {
   Select,
   SelectContent,
@@ -19,7 +18,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-
 import domains_faculty from "@/data/domains_faculty";
 import Footer from "@/components/Footer";
 
@@ -35,10 +33,29 @@ interface Events {
 }
 
 const Events = () => {
-  const events: Events[] = JSON.parse(JSON.stringify(data));
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const [query, setQuery] = useState("");
   const [selectedDomain, setSelectedDomain] = useState("all");
+
+  const fetchEvents = async () => {
+    try {
+      const res = await fetch(`${"http://localhost:3001"}/api/events`);
+      if (!res.ok) throw new Error("Neuspješan dohvat događanja");
+      const data = await res.json();
+      setEvents(data.events || []);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchEvents();
+  }, []);
 
   const selectedEvents =
     selectedDomain === "all"
@@ -47,7 +64,7 @@ const Events = () => {
 
   //filtriranje dogadaja
   const filteredEvents = selectedEvents.filter((event) =>
-    `${event.name} ${event.organizer} ${event.location} ${event.description}`
+    `${event.title} ${event.organizer} ${event.location} ${event.description}`
       .toLowerCase()
       .includes(query.toLowerCase())
   );
@@ -119,7 +136,7 @@ const Events = () => {
                       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                         <div className="space-y-2">
                           <CardTitle className="text-2xl">
-                            {event.name}
+                            {event.title}
                           </CardTitle>
                           <CardDescription className="text-base">
                             {event.organizer}
@@ -142,12 +159,12 @@ const Events = () => {
                         </div>
                         <div className="flex items-center gap-2">
                           <Calendar className="h-4 w-4" />
-                          {event.date_from}
+                          {event.start_datetime}
                         </div>
                         -
                         <div className="flex items-center gap-2">
                           <Calendar className="h-4 w-4" />
-                          {event.date_to}
+                          {event.end_datetime}
                         </div>
                       </div>
                       <div className="flex flex-col md:flex-row gap-4 md:gap-2 justify-end">

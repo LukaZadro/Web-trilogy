@@ -91,7 +91,7 @@ const CVForm = ({ data, onChange }: CVFormProps) => {
               id="fullName"
               value={data.personalInfo.fullName}
               onChange={(e) => updatePersonalInfo("fullName", e.target.value)}
-              placeholder="John Doe"
+              placeholder="Ivo Ivić"
             />
           </div>
           <div>
@@ -101,7 +101,7 @@ const CVForm = ({ data, onChange }: CVFormProps) => {
               type="email"
               value={data.personalInfo.email}
               onChange={(e) => updatePersonalInfo("email", e.target.value)}
-              placeholder="john@example.com"
+              placeholder="ivo.ivic@gmail.com"
             />
           </div>
           <div>
@@ -177,7 +177,7 @@ const CVForm = ({ data, onChange }: CVFormProps) => {
                   onChange={(e) =>
                     updateEducation(index, "institution", e.target.value)
                   }
-                  placeholder="University of Zagreb"
+                  placeholder="Sveučilište u Zagrebu"
                 />
               </div>
               <div>

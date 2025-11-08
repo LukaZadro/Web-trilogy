@@ -22,6 +22,7 @@ import {
   Mail,
   UserRoundCog,
   BookOpenTextIcon,
+  Download,
 } from "lucide-react";
 import {
   Select,
@@ -89,6 +90,14 @@ const Sastavnice = () => {
               programima koje fakulteti i akademije nude. Također saznaj što te
               očekuje nakon završetka studija.
             </p>
+            <div className="flex justify-start w-full">
+              <a href="/vodic-za-buduce-student-akgod-2026-2027.pdf" download>
+                <Button className="w-full md:w-auto bg-primary/10 text-primary hover:bg-primary/20">
+                  <Download className="mr-2 h-4 w-4" />
+                  Preuzmi vodič kao PDF
+                </Button>
+              </a>
+            </div>
             <p>
               Za više informacija pristisni gumb "Saznaj više" pored sastavnice
               koja te zanima.
